@@ -1,0 +1,75 @@
+/* ==========================================================================
+   DONUT — dependency-free SVG ring showing principal vs. total interest.
+   Arc colors are CSS classes (not attributes) so the tokens remain the
+   single source of truth and dark/print themes restyle it automatically.
+   ========================================================================== */
+
+.donut-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding-top: 6px;
+}
+
+/* SVG arcs — stroke (not fill) draws the ring segments */
+.donut-track {
+  stroke: var(--donut-track);
+}
+
+.donut-arc-principal {
+  stroke: var(--navy-700);
+}
+
+.donut-arc-interest {
+  stroke: var(--teal-500);
+}
+
+/* Center text inside the ring */
+.donut-percent {
+  font-size: 22px;
+  font-weight: 800;
+  fill: var(--heading);
+  font-family: var(--font);
+}
+
+.donut-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  fill: var(--muted);
+  font-family: var(--font);
+}
+
+/* ---- Legend beside the ring ---- */
+.donut-legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.88rem;
+  color: var(--ink);
+}
+
+.donut-legend li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+/* Small colored square before each legend label */
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.dot-navy {
+  background: var(--navy-700);
+}
+
+.dot-teal {
+  background: var(--teal-500);
+}

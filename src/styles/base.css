@@ -1,0 +1,85 @@
+/* ==========================================================================
+   BASE STYLES — resets, shared card primitives and print fundamentals.
+   Component-specific rules live next to their components as Component.css.
+   ========================================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  /* Smooth cross-fade when the light/dark theme flips */
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Utility: hide an element when printing (theme controls, footer, etc.) */
+.no-print {
+  /* class is applied in JSX; the actual hide rule lives in the print block */
+}
+
+/* ---- Shared card primitive used by every panel ---- */
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.card-title {
+  margin: 0 0 18px;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--heading);
+}
+
+/* ---- Shared scroll container for tables ---- */
+.table-scroll {
+  max-height: 440px;
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  -webkit-overflow-scrolling: touch; /* momentum scroll on iOS */
+}
+
+/* ------------------------------ Print base ------------------------------ */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: var(--card);
+  }
+
+  /* Cards flatten on paper: no shadows, simple hairline border */
+  .card {
+    box-shadow: none;
+    border: 1px solid var(--print-border);
+    break-inside: avoid; /* keep a panel whole across page breaks */
+  }
+
+  /* Keep brand colors when the browser's "background graphics" is off */
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 12mm;
+  }
+}

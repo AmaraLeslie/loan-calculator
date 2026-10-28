@@ -1,0 +1,126 @@
+/* ==========================================================================
+   DESIGN TOKENS — the single source of truth for every visual value.
+   --------------------------------------------------------------------------
+   Want to re-brand the app? Change colors, radius or the font stack HERE.
+   Every component reads these CSS variables, so no JSX needs editing.
+   Two palettes are defined:
+     :root             → light theme (default)
+     [data-theme=dark] → dark theme (toggled from SettingsContext)
+   Token names keep their historical "navy/teal" labels even though the
+   current palette is emerald — the names describe the *role*, not the hue.
+   ========================================================================== */
+
+:root {
+  /* ---- Brand colors (darkest → lightest) ---- */
+  --navy-900: #052e1c;   /* deepest green: hero gradient start, brand mark */
+  --navy-700: #0f6b43;   /* primary green: headings' family, buttons, table header */
+  --navy-100: #e2f3e9;   /* soft green wash: summary strips, badges */
+  --teal-500: #10b981;   /* emerald accent: sliders, links, interest values */
+  --teal-400: #34d399;   /* bright mint: hero amount, dark-mode highlights */
+  --teal-50: #ecfdf5;    /* palest green tint: selected states, winner cells */
+  --green-strong: #047857; /* emphasis text that must pass contrast in light mode */
+
+  /* ---- Neutral surfaces & text ---- */
+  --bg: #f4f7f3;         /* page background */
+  --card: #ffffff;       /* card and input surface */
+  --ink: #15271d;        /* body text */
+  --muted: #587064;      /* secondary text, hints, table balance column */
+  --line: #d7e3da;       /* borders */
+  --heading: #07331f;    /* section titles and strong headings */
+  --label: #0b3a25;      /* field labels */
+  --link: #0f6b43;       /* hyperlinks */
+  --input-bg: #fbfdfb;   /* number input fill */
+  --subtle-bg: #f3f8f4;  /* inset panels and stat cards */
+  --row-alt: #f3f8f4;    /* zebra striping in tables */
+  --row-hover: #ecfdf5;  /* row hover wash */
+  --row-line: #e6efe9;   /* hairline between table rows */
+  --donut-track: #dcebe1;/* unfilled portion of the donut chart */
+  --badge-bg: #e2f3e9;   /* tech badge background */
+  --badge-text: #0f6b43; /* tech badge text */
+  --on-strong: #ffffff;  /* text sitting on dark-green surfaces (hero, buttons) */
+  --on-strong-muted: #b9c9dc; /* secondary text inside the dark hero */
+  --print-border: #999999;    /* neutral grey used for borders on paper */
+
+  /* ---- Elevation ---- */
+  --shadow: 0 10px 30px rgba(5, 46, 28, 0.08);
+  --card-shadow-hover: rgba(5, 46, 28, 0.05);
+
+  /* ---- Shape & typography ---- */
+  --radius: 16px;
+  --font: 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial,
+    sans-serif;
+
+  color-scheme: light;
+}
+
+/* ------------------------------ Dark theme ------------------------------ */
+[data-theme='dark'] {
+  --navy-900: #04160e;
+  --navy-700: #0f5132;
+  --navy-100: #10301f;
+  --teal-500: #34d399;
+  --teal-400: #6ee7b7;
+  --teal-50: #0c2a1d;
+  --green-strong: #6ee7b7;
+
+  --bg: #060d09;
+  --card: #0d1a13;
+  --ink: #dcebe2;
+  --muted: #8ca99a;
+  --line: #1d3528;
+  --heading: #edf7f1;
+  --label: #cfe4d8;
+  --link: #6ee7b7;
+  --input-bg: #08130d;
+  --subtle-bg: #0a1710;
+  --row-alt: #0a1710;
+  --row-hover: #0c2419;
+  --row-line: #17291f;
+  --donut-track: #1d3528;
+  --badge-bg: #10301f;
+  --badge-text: #a7d9c1;
+  --on-strong: #ffffff;
+  --on-strong-muted: #b9c9dc;
+  --print-border: #999999;
+
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  --card-shadow-hover: rgba(0, 0, 0, 0.3);
+
+  color-scheme: dark;
+}
+
+/* ------------------------- Print (PDF quotation) -------------------------
+   Printing always uses a clean light palette regardless of the app theme,
+   so client quotations look identical on paper. */
+@media print {
+  :root,
+  [data-theme='dark'] {
+    --bg: #ffffff;
+    --card: #ffffff;
+    --ink: #000000;
+    --muted: #333333;
+    --line: #8a8a8a;
+    --heading: #07331f;
+    --label: #07331f;
+    --input-bg: #ffffff;
+    --subtle-bg: #ffffff;
+    --row-alt: #f2f8f4;
+    --row-line: #cccccc;
+    --donut-track: #dddddd;
+    --badge-bg: #e2f3e9;
+    --badge-text: #0f6b43;
+    --on-strong: #ffffff;
+    --on-strong-muted: #b9c9dc;
+    --print-border: #999999;
+    --navy-900: #052e1c;
+    --navy-700: #0f6b43;
+    --navy-100: #eef7f1;
+    --teal-500: #10b981;
+    --teal-400: #34d399;
+    --teal-50: #ecfdf5;
+    --green-strong: #047857;
+    --row-hover: #ffffff;
+
+    color-scheme: light;
+  }
+}

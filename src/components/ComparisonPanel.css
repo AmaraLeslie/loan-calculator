@@ -1,0 +1,56 @@
+/* ==========================================================================
+   COMPARISON PANEL — reducing-balance vs. flat-rate side by side for the
+   exact same quote, with a check badge on the cheaper option of each row.
+   ========================================================================== */
+
+.compare-card {
+  margin-top: 22px;
+}
+
+/* This panel never needs the capped scroll height used by the schedule */
+.compare-scroll {
+  max-height: none;
+}
+
+.compare-table td {
+  text-align: center;
+}
+
+.compare-table th:first-child,
+.compare-criterion {
+  text-align: left !important;
+  font-weight: 600;
+  color: var(--heading);
+}
+
+/* Highlighted winning cell */
+.winner-cell {
+  font-weight: 800;
+  color: var(--green-strong);
+  background: var(--teal-50);
+}
+
+[data-theme='dark'] .winner-cell {
+  color: var(--teal-400);
+}
+
+/* Round green check badge */
+.winner-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  margin-left: 8px;
+  border-radius: 50%;
+  background: var(--teal-500);
+  color: var(--on-strong);
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
+.compare-footnote {
+  margin: 12px 0 0;
+  font-size: 0.82rem;
+  color: var(--muted);
+}

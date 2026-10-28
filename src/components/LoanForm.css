@@ -1,0 +1,309 @@
+/* ==========================================================================
+   LOAN FORM — every input control: sliders, number boxes, preset chips,
+   the interest-method switch, the fee %/FCFA mode switch and the compare
+   button. All colors/radii come from design tokens.
+   ========================================================================== */
+
+/* One labelled control block (label row + input + range limits/helper) */
+.field {
+  margin-bottom: 22px;
+}
+
+.field-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.field-label-row label,
+.method-field legend {
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--label);
+}
+
+.field-value {
+  font-weight: 700;
+  color: var(--teal-500);
+  font-size: 0.95rem;
+}
+
+/* ---- Range sliders ---- */
+input[type='range'] {
+  width: 100%;
+  accent-color: var(--teal-500);
+  cursor: pointer;
+}
+
+.range-limits {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+/* ---- Number boxes (typeable values next to the sliders) ---- */
+.number-input {
+  width: 150px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: right;
+  padding: 8px 10px;
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  color: var(--ink);
+  background: var(--input-bg);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease,
+    background-color 0.25s ease;
+}
+
+.number-input:focus {
+  outline: none;
+  border-color: var(--teal-500);
+  /* Soft emerald focus ring */
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.18);
+}
+
+.number-input-sm {
+  width: 92px;
+}
+
+.number-input-md {
+  width: 128px;
+}
+
+/* In-flow unit suffix ("%", "mois", "FCFA") — never absolutely positioned,
+   so it can never overlap the typed value on narrow screens */
+.number-input-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.number-unit {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--muted);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* ---- Helper text under a field ---- */
+.field-helper {
+  margin-top: 3px;
+  font-size: 0.76rem;
+  color: var(--muted);
+}
+
+/* Strong helper: live FCFA equivalents of the fee/insurance rates */
+.field-helper-strong {
+  font-weight: 700;
+  color: var(--teal-500);
+}
+
+[data-theme='dark'] .field-helper-strong {
+  color: var(--teal-400);
+}
+
+/* ---- Processing-fee % / FCFA mode switch ---- */
+.dual-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.mode-segment {
+  display: inline-flex;
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--card);
+}
+
+.mode-btn {
+  font-family: inherit;
+  font-size: 0.76rem;
+  font-weight: 800;
+  padding: 8px 10px;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.mode-btn-active {
+  background: var(--navy-700);
+  color: var(--on-strong);
+}
+
+/* ---- Quick amount preset chips ---- */
+.preset-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1.5px solid var(--line);
+  background: var(--card);
+  color: var(--heading);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.chip:hover {
+  border-color: var(--teal-500);
+}
+
+.chip-active {
+  background: var(--navy-700);
+  border-color: var(--navy-700);
+  color: var(--on-strong);
+}
+
+/* ---- Interest-method fieldset and segmented control ---- */
+.method-field {
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  padding: 14px;
+  margin: 4px 0 18px;
+  background: transparent;
+}
+
+.method-field legend {
+  padding: 0 6px;
+}
+
+.segmented {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.seg {
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.88rem;
+  padding: 10px 8px;
+  border-radius: 10px;
+  border: 1.5px solid var(--line);
+  background: var(--card);
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.seg-active {
+  background: var(--teal-50);
+  border-color: var(--teal-500);
+  color: var(--heading);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+}
+
+.method-hint {
+  margin: 10px 0 0;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+/* ---- Fees & insurance inset panel ---- */
+.fees-field {
+  background: var(--subtle-bg);
+}
+
+.fees-field .field {
+  margin-bottom: 14px;
+}
+
+.fees-field .field:last-of-type {
+  margin-bottom: 4px;
+}
+
+/* ---- Compare-methods call-to-action button ---- */
+.compare-toggle {
+  width: 100%;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1.5px solid var(--teal-500);
+  background: var(--card);
+  color: var(--heading);
+  cursor: pointer;
+  margin-bottom: 16px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.compare-toggle:hover {
+  background: var(--teal-50);
+}
+
+.compare-active {
+  background: var(--navy-700);
+  color: var(--on-strong);
+}
+
+.compare-active:hover {
+  background: var(--navy-700);
+}
+
+/* ---- Bottom one-line loan summary ---- */
+.form-summary-line {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+  background: var(--navy-100);
+  border-radius: 10px;
+  padding: 10px 14px;
+}
+
+.form-summary-line strong {
+  color: var(--heading);
+}
+
+/* ------------------------------ Responsive ------------------------------ */
+@media (max-width: 480px) {
+  .segmented {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* -------------------------------- Print ---------------------------------
+   A quotation prints the chosen values as plain text: interactive controls
+   (sliders, chips, switches, buttons) are hidden and inputs flatten. */
+@media print {
+  .compare-toggle,
+  .preset-row,
+  .segmented,
+  input[type='range'] {
+    display: none !important;
+  }
+
+  .range-limits {
+    display: none;
+  }
+
+  .number-input {
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    color: var(--ink);
+  }
+}

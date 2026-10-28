@@ -1,0 +1,10 @@
+/* ==========================================================================
+   GLOBAL STYLESHEET ENTRY POINT
+   Imported once from main.jsx, before any component CSS, so design tokens
+   and base rules always win the cascade at equal specificity.
+   Component stylesheets are imported directly inside their .jsx files and
+   therefore travel with the component if it is ever moved or reused.
+   ========================================================================== */
+
+@import './tokens.css';
+@import './base.css';
